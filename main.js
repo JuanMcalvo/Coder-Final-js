@@ -247,10 +247,10 @@ function eliminarProducto(index) {
 
     Toastify({
         text: 'Producto eliminado',
-        duration: 1500, // Duración de la notificación en milisegundos
-        gravity: 'top', // Posición de la notificación ('top', 'center', 'bottom')
-        position: 'right', // Posición del texto dentro de la notificación ('left', 'center', 'right')
-        backgroundColor: '#E74C3C', // Color de fondo de la notificación
+        duration: 1500,
+        gravity: 'top', 
+        position: 'right', 
+        backgroundColor: '#E74C3C', 
     }).showToast();
     actualizarContadorCarrito();
     actualizarCarritoDOM();
