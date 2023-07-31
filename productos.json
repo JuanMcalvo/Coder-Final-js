@@ -1,0 +1,23 @@
+[
+    {
+        "nombre": "Samsung Galaxy A52",
+        "codigo": "CEL-001",
+        "precio": 60000,
+        "info": "Ram 6GB Camara 24mp",
+        "stock": 2
+    },
+    {
+        "nombre": "Xiaomi Redmi Note 10 Pro",
+        "codigo": "PHN-002",
+        "precio": 50000,
+        "info": "Ram de 8GB con camara de 108MP",
+        "stock": 5
+    },
+    {
+        "nombre": "Apple iPhone SE",
+        "codigo": "MBL-003",
+        "precio": 80000,
+        "info": "Ram 4g con ram 12mp",
+        "stock": 10
+    }
+]
