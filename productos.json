@@ -1,23 +1,34 @@
 [
     {
-        "nombre": "Samsung Galaxy A52",
+        "nombre": "Samsung Galaxy A54",
         "codigo": "CEL-001",
-        "precio": 60000,
-        "info": "Ram 6GB Camara 24mp",
+        "precio": 120000,
+        "info": "El nuevo Samsung Galaxy A54 5G llega con una pantalla Super AMOLED de 6.4 pulgadas con resolución 1080p (FHD+) y tasa de refresco de 120Hz. Por dentro, encontramos un potente procesador octa-core acompañado de 8GB de RAM con 256GB de almacenamiento interno expandible por microSD. La cámara posterior del Galaxy A54 5G es triple, liderada por una cámara de 50MP con OIS y su cámara selfie es de 32MP. Completando las características del Samsung Galaxy A54 5G encontramos una batería de 5000 mAh con soporte para carga rápida, lector de huellas bajo pantalla, parlantes stereo, resistencia al agua y Android 13 con la interfaz One UI 5.1.",
+        "imagen": "https://cdnlaol.laanonimaonline.com/web/images/productos/b/0000036000/36901.jpg",
         "stock": 2
     },
     {
-        "nombre": "Xiaomi Redmi Note 10 Pro",
+        "nombre": "Motorola Edge 30 Neo",
         "codigo": "PHN-002",
         "precio": 50000,
-        "info": "Ram de 8GB con camara de 108MP",
+        "info": "Diseño compacto y colores Pantone. Disfrutá del diseño delgado y liviano que cuenta con los colores más recientes y populares de Pantone. Pantalla pOLED de 6.28 (20: 9,  1080x2400, 419 ppi) y 120 Hz + Audio Dolby Atmos®. Experimentá más de mil millones de tonos de colores en una pantalla OLED con sonido multidimensional Dolby Atmos®.Sistema de cámaras de 64MP con estabilización óptica e infinitas funciones. Capturá fotos más nítidas con los sensores gran angular, macro y de profundidad, incluso en cualquier condición de luz, además de eliminar los desenfoques por movimientos involuntarios de la cámara. Carga TurboPower de 68 W. Obtené batería para el día en solo 10 minutos de carga. También vas a poder cargarlo inalámbricamente. Desempeño superior. Procesador Snapdragon 695 5G. Accedé a una experiencia de juego más fluida, reproducí videos sin problemas y disfrutá de las funciones de cámara más recientes. Además, conectate a velocidades 5G",
+        "imagen": "https://cdnlaol.laanonimaonline.com/web/images/productos/b/0000035000/35899.jpg",
         "stock": 5
     },
     {
-        "nombre": "Apple iPhone SE",
+        "nombre": "Celular ZTE Blade A72S",
         "codigo": "MBL-003",
         "precio": 80000,
-        "info": "Ram 4g con ram 12mp",
+        "info": "HD+ Cam Principal 50MP+2MP+2MP 3GB RAM (+2GB FUSION) / 128GB ROM Batería 5000 mAh - Octa Core Incluye: Funda protectora, cargador, Cable USB, Pin extractor",
+        "imagen": "https://cdnlaol.laanonimaonline.com/web/images/productos/b/0000039000/39123.jpg",
+        "stock": 10
+    },
+    {
+        "nombre": "Celular Alcatel 5H Plus",
+        "codigo": "MBL-004",
+        "precio": 80000,
+        "info": "Convertí tus grandes momentos en recuerdos mágicos con la cámara triple AI de 50MP.Disfruta recopilando recuerdos con un gran almacenamiento de hasta 128GB. La duración de la batería de dos días te mantiene haciendo lo que amas, mientras que un diseño minimalista te hace vivir con estilo.",
+        "imagen": "https://cdnlaol.laanonimaonline.com/web/images/productos/b/0000033000/33785.jpg",
         "stock": 10
     }
 ]

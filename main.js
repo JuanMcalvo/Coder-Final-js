@@ -6,7 +6,7 @@ let lista = [];
 const btnCart = document.querySelector('.container-carrito');
 const containerCartProducts = document.querySelector('.container-cart-products');
 //evento de icono carrito
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     const containerCartProducts = document.querySelector('.container-cart-products');
     const btnCart = document.querySelector('.container-carrito');
 
@@ -70,17 +70,26 @@ function generarListaProductos() {
         cardBody.classList.add('card-body');
 
         let img = document.createElement('img');
-        img.src = "./img/non-skin.gif";
+        img.src = producto.imagen;
         img.classList.add('product-img')
         img.alt = "";
 
         let nombre = document.createElement('h5');
         nombre.classList.add('card-title');
-        nombre.textContent = producto.nombre;
+        nombre.innerHTML = producto.nombre + "<br> $"  + producto.precio;
 
         let descripcion = document.createElement('p');
-        descripcion.classList.add('card-text');
-        descripcion.innerHTML = producto.info + "<br>" + "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam consectetur doloremque, nemo neque";
+        descripcion.classList.add('card-text', 'text-justify');
+        descripcion.textContent = producto.info.slice(0, 100);
+
+        let leerMasLink = document.createElement('a');
+        leerMasLink.href = "#";
+        leerMasLink.textContent = "Leer más";
+        leerMasLink.classList.add('leer-mas');
+        leerMasLink.addEventListener('click', function () {
+            descripcion.textContent = producto.info; // Mostrar la descripción completa al hacer clic en "Leer más"
+            leerMasLink.style.display = 'none'; // Ocultar el enlace "Leer más" una vez que se haya mostrado la descripción completa
+        });
 
         let btnAgregar = document.createElement('a');
         btnAgregar.href = "#";
@@ -94,59 +103,35 @@ function generarListaProductos() {
         // Agregar los elementos al DOM
         cardBody.appendChild(img);
         cardBody.appendChild(nombre);
-        cardBody.appendChild(descripcion);
+        let wrapper = document.createElement('div');
+        wrapper.appendChild(descripcion);
+        wrapper.appendChild(leerMasLink);
+        cardBody.appendChild(wrapper);
         cardBody.appendChild(btnAgregar);
+
 
         card.appendChild(cardBody);
         productListContainer.appendChild(card);
     }
 
 }
-for (let i = 0; i < lista.length; i++) {
-    let producto = lista[i];
-
-    // Crear elementos HTML para cada producto
-    let card = document.createElement('div');
-    card.classList.add('card', 'w-50', 'm-auto', 'mb-2');
-
-    let cardBody = document.createElement('div');
-    cardBody.classList.add('card-body');
-
-    let img = document.createElement('img');
-    img.src = "./img/non-skin.gif";
-    img.classList.add('product-img')
-    img.alt = "";
-
-    let nombre = document.createElement('h5');
-    nombre.classList.add('card-title');
-    nombre.textContent = producto.nombre;
-
-    let descripcion = document.createElement('p');
-    descripcion.classList.add('card-text');
-    descripcion.innerHTML = producto.info + "<br>" + "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam consectetur doloremque, nemo neque";
-
-    let btnAgregar = document.createElement('a');
-    btnAgregar.href = "#";
-    btnAgregar.classList.add('btn', 'btn-primary');
-    btnAgregar.textContent = "Agregar al carrito";
-    btnAgregar.id = "btn" + i;
-    btnAgregar.addEventListener('click', function () {
-        agregarCarrito(producto);
-        actualizarCarritoDOM();
-    });
-    // Agregar los elementos al DOM
-    cardBody.appendChild(img);
-    cardBody.appendChild(nombre);
-    cardBody.appendChild(descripcion);
-    cardBody.appendChild(btnAgregar);
-
-    card.appendChild(cardBody);
-    productListContainer.appendChild(card);
-}
 
 function agregarCarrito(producto) {
+    const index = carrito.findIndex(item => item.codigo === producto.codigo);
 
-    carrito.push(producto);
+    if (index !== -1) {
+        // Si el producto ya está en el carrito, aumentar la cantidad y el monto
+        carrito[index].cantidad++;
+        carrito[index].monto += producto.precio;
+    } else {
+        // Si el producto no está en el carrito, agregarlo
+        carrito.push({
+            ...producto,
+            cantidad: 1,
+            monto: producto.precio
+        });
+    }
+
     localStorage.setItem('carrito', JSON.stringify(carrito));
     Toastify({
         text: 'Agregado al carrito',
@@ -158,17 +143,14 @@ function agregarCarrito(producto) {
 
     actualizarContadorCarrito();
     actualizarCarritoDOM();
-
-    let titulo = document.querySelector('.titulo-producto-carrito');
-    titulo.textContent = producto.nombre;
-
 }
 
 function actualizarContadorCarrito() {
-    let contador = document.getElementById('contador-productos');
-    contador.innerText = carrito.length;
-
+    const contador = document.getElementById('contador-productos');
+    const cantidadTotal = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+    contador.innerText = cantidadTotal;
 }
+
 
 function insertarElementos(producto) {
     let cantidadProd = document.createElement('span');
@@ -180,7 +162,7 @@ function actualizarCarritoDOM() {
     const cartTotal = document.querySelector('.total-pagar');
 
     // Limpiar el contenido del carrito antes de actualizarlo
-    cartProducts.innerHTML = ' ';
+    cartProducts.innerHTML = '';
 
     // Recorrer los productos en el carrito
     carrito.forEach(producto => {
@@ -193,7 +175,7 @@ function actualizarCarritoDOM() {
 
         const cantidadProducto = document.createElement('span');
         cantidadProducto.id = 'cantidad-producto-carrito';
-        cantidadProducto.textContent = obtenerCantidadProducto(producto.codigo); //compara por codigo si esta en el carrito
+        cantidadProducto.textContent = producto.cantidad; // Mostrar la cantidad del producto
 
         const tituloProducto = document.createElement('p');
         tituloProducto.classList.add('titulo-producto-carrito');
@@ -201,8 +183,7 @@ function actualizarCarritoDOM() {
 
         const precioProducto = document.createElement('span');
         precioProducto.classList.add('precio-producto-carrito');
-        precioProducto.textContent = `$${producto.precio}`;
-
+        precioProducto.textContent = `$${producto.monto}`; // Mostrar el monto del producto
 
         const btnRemove = document.createElement('button');
         btnRemove.innerHTML = `
@@ -225,12 +206,11 @@ function actualizarCarritoDOM() {
         cartProduct.appendChild(infoCartProduct);
         cartProduct.appendChild(btnRemove);
 
-
         cartProducts.appendChild(cartProduct);
     });
 
     // Calcular y mostrar el total a pagar
-    const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0);
+    const total = carrito.reduce((acumulador, producto) => acumulador + producto.monto, 0);
     cartTotal.textContent = `$${total}`;
 }
 
@@ -248,9 +228,9 @@ function eliminarProducto(index) {
     Toastify({
         text: 'Producto eliminado',
         duration: 1500,
-        gravity: 'top', 
-        position: 'right', 
-        backgroundColor: '#E74C3C', 
+        gravity: 'top',
+        position: 'right',
+        backgroundColor: '#E74C3C',
     }).showToast();
     actualizarContadorCarrito();
     actualizarCarritoDOM();

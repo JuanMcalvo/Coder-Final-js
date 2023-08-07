@@ -11,23 +11,23 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
-<body>
+<body class="d-grid gap-2">
     <header>
-        <nav class="navbar navbar-light bg-personalizado position-relative fixed-top">
+        <nav class="navbar bg-personalizado fixed-top">
             <div class="container d-flex align-items-center">
-                <div>
-                    <a class="navbar-brand" href="#">
-                        <img src="img/logo1.svg" alt="Logo de Mi Tienda">
+                <div class>
+                    <a class="navbar-brand" href="https://web.whatsapp.com/" target="_blank">
+                        <img src="img/logo1.svg" alt="Logo de Mi Tienda" title="Contactar">
                     </a>
 
                 </div>
 
-                <form class="d-flex col-sm-6" role="search">
+                <form class="d-flex col-md-6 col-sm-2" role="search">
                     <input class="form-control me-auto" id="searchInput" type="search" placeholder="Buscar"
                         aria-label="Buscar">
                 </form>
 
-                <div class="container-icon ">
+                <div class="container-icon " style="cursor:pointer;">
                     <div class="container-carrito">
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
                             class="bi bi-cart4" viewBox="0 0 16 16">
@@ -45,17 +45,20 @@
                         </div>
                         <div class="cart-total">
                             <h3>Total:</h3>
-                            <span class="total-pagar">$0</span>
+                            <span class="total-pagar"></span>
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container container-productos align-content-center bg-light" id="productList">
-        <p class="text-center">Lista de productos</p>
+    <div class="mt-5 bg-dark">
+        <div class="container container-productos align-content-center bg-light mt-5" id="productList">
+
+        </div>
 
     </div>
+
 
     <!-- Scripts -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
